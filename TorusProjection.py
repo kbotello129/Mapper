@@ -45,10 +45,14 @@ def cover_circles_r2(minx, miny, maxx, maxy, r):
   return np.array(covered)
   
 def adj_matrix_by_alpha(distance_matrix, alpha):
-    """function to create the adjacency matrix from the distance matrix.
+    """function to create the adjacency matrix from the distance matrix and
+    the maximum length alpha.
     Parameters:
     -------------------------------------------------------
     distance_matrix : numpy array
+                      distance matrix
+    alpha: float
+           maximum lenght to consider two points adjacent
 
     Return:
     --------------------------------------------------------
@@ -102,15 +106,19 @@ def distance_matrix_from_data(data):
     return distance_matrix
 
 def graph_alpha(distance_matrix, alpha):
-    """Function to obtain a graph from the distance matrix.
+    """Function to obtain a graph from the distance matrix and the maximum
+       length alpha.
     Parameters:
     -------------------------------------------------------
     distance_matrix: numpy array
                      distance matrix
+    alpha: float
+           maximum length to consider two points adjacent
 
     Return:
     --------------------------------------------------------
     graph object
+    G
     """
     A = adj_matrix_by_alpha(distance_matrix, alpha)
     nodes, edges = adj_matrix_to_graph(A)
