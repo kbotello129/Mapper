@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Alvarado"
+  given-names: "Omar"
+- family-names: "Botello"
+  given-names: "Kelly"
+- family-names: "Moreno"
+  given-names: "Fernando"
+title: "Mapper"
+version: 1.0.0
+doi: https://zenodo.org/badge/latestdoi/645099116
+date-released: 2023-05-31
+url: "https://github.com/kbotello129/Mapper"
