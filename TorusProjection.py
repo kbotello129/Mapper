@@ -243,7 +243,7 @@ def mapper_v2(projected_data, G, U, n):
 
 
 
-# BASE DE DATOS DEL TORO
+# TORUS DATABASE
 data_torus_df = pd.read_csv('/content/gdrive/MyDrive/data_torus_4500.csv', header=None)
 data_torus = data_torus_df.values
 
@@ -253,7 +253,7 @@ for row in data_torus:
 plt.show()
 
 
-# DATOS FILTRADOS
+# FILTERED DATA
 elmapper = km.KeplerMapper(verbose=2)
 filtered = elmapper.fit_transform(data_torus, projection=[0, 1], scaler=None)
 
@@ -261,7 +261,7 @@ plt.scatter(filtered[:, [0]], filtered[:, [1]], label= "stars", color= "green",
             marker= "*", s=30)
 plt.show()
 
-# CUBIERTA Y MAPPER
+# COVER AND MAPPER
 min = np.amin(filtered, axis=0)
 max = np.amax(filtered, axis=0)
 # print(min, max)
@@ -297,7 +297,7 @@ for component1 in components:
 print("Aristas: ", aristas_num)
 print("Cantidad aristas: ", len(aristas_num))
 
-# TRIÁNGULOS
+# TRIANGLE
 triangles_components = []
 triangles_num = []
 comb = combinations(componentes, 3)
@@ -314,7 +314,7 @@ for i in list(comb):
 print("triangulos: ", len(triangles_num))
 print(triangles_num)
 
-# TETRAEDROS
+# TETRAHEDRONS
 four_components = []
 comb = combinations(componentes, 4)
 for i in list(comb):
@@ -325,7 +325,7 @@ for i in list(comb):
 
 print("tetraedros: ", len(four_components))
 
-# MATRIZ PARA ESPACIO NULIDAD
+# NULL SPACE MATRIX
 N = np.zeros((len(aristas), len(triangles_components)))
 num = 0
 for triangle in triangles_components:
