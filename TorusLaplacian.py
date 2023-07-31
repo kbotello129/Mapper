@@ -308,7 +308,7 @@ def mapper_v2(projected_data, G, U, n):
 
 
 
-# BASE DE DATOS DEL TORO CONSTRUIDA
+# DATABASE OF THE CONSTRUCTED TORUS
 theta = math.pi/25
 a = 2.1
 c = 6
@@ -348,13 +348,13 @@ for row in data_torus:
 plt.show()
 
 
-# Meterlo en ambient + 3 dimensiones
+# PUT IN AMBIENT + 3 DIMENSIONS
 ambient = 27
 add = np.zeros((data_torus.shape[0], ambient))
 data_torus = np.append(data_torus, add, axis=1)
 
 
-# Rotación
+# ROTATION
 data = rotate_figure(data_torus, ambient + 3)
 
 fig, ax = plt.subplots(1, 1, subplot_kw={'projection': '3d'})
@@ -363,20 +363,20 @@ for row in data_torus:
 plt.show()
 
 
-# MATRIZ DE PESOS
+# WEIGHT MATRIX
 B = np.zeros((len(data_torus), len(data_torus)))
 j = 0
 for i in range(B.shape[0]):
     B[i, :] = density_gauss(4, np.linalg.norm(data_torus[i, :]-data_torus,axis=1))
 
-# LAPLACIANO
+# LAPLACIAN
 L = np.zeros((len(data_torus), len(data_torus)))
 j = 0
 s = np.sum(B,axis=1)
 for i in range(len(data_torus)):
     L[i,:] = B[i,:]/(np.sum(B[i, :])*s)
 
-# DATOS FILTRADOS
+# FILTERED DATA
 w, v = eig(L)
 flat = w.flatten()
 flat.sort()
@@ -387,7 +387,7 @@ plt.scatter(filtered[:, [0]], filtered[:, [1]], label= "stars", color= "green",
             marker= "*", s=30)
 plt.show()
 
-# CUBIERTA Y MAPPER
+# COVER AND MAPPER
 min = np.amin(filtered, axis=0)
 max = np.amax(filtered, axis=0)
 # print(min, max)
@@ -422,7 +422,7 @@ for component1 in components:
 # print("Aristas: ", aristas_num)
 print("Cantidad aristas: ", len(aristas_num))
 
-# TRIÁNGULOS
+# TRIANGLE
 triangles_components = []
 triangles_num = []
 comb = combinations(componentes, 3)
@@ -439,7 +439,7 @@ for i in list(comb):
 print("triangulos: ", len(triangles_num))
 # print(triangles_num)
 
-# TETRAEDROS
+# TETRAHEDRONS
 four_components = []
 comb = combinations(componentes, 4)
 for i in list(comb):
@@ -450,7 +450,7 @@ for i in list(comb):
 
 print("tetraedros: ", len(four_components))
 
-# MATRIZ PARA ESPACIO NULIDAD
+# MATRIX FOR NULL SPACE
 N = np.zeros((len(aristas), len(triangles_components)))
 num = 0
 for triangle in triangles_components:
