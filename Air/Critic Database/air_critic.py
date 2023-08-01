@@ -85,6 +85,7 @@ def create_fig(df,title)->None:
 
 #data_aire_df = pd.read_csv("level_pollution.csv") # DATABASE FROM 6 AM TO 10 PM
 data_aire_df = pd.read_csv("data_level_pollution_O3.csv") # CRITIC DATABASE FROM 6 AM TO 10 AM
+# REMOVE COMMENT TO OBTAIN MAPPER FOR EACH STATION
 #data_aire_df = data_aire_df[data_aire_df.id_station_id=="TLA"]
 #data_aire_df = data_aire_df[data_aire_df.id_station_id=="XAL"]
 #data_aire_df = data_aire_df[data_aire_df.id_station_id=="MGH"]
